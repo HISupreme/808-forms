@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why this matters — 808forms</title>
+<meta name="description" content="Hawaii residents leave tens of millions of dollars unclaimed every year and absorb measurable harm — eviction, lost coverage, lost ancestral land — because government forms are hard to find. The evidence, with citations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a2332;
+    --ink-soft: #475569;
+    --ink-faint: #64748b;
+    --paper: #ffffff;
+    --paper-warm: #f6f5f0;
+    --paper-cool: #f1f4f8;
+    --ocean: #0a4b78;
+    --ocean-deep: #083a5d;
+    --rule: #e2e5ea;
+    --rule-soft: #eceef2;
+    --highlight-bg: #fef9e7;
+    --highlight-border: #d4a72c;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--ocean); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--ocean-deep); }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; gap: 24px;
+  }
+  .logo {
+    font-weight: 700; font-size: 18px; letter-spacing: -0.01em;
+    color: var(--ink); text-decoration: none;
+  }
+  .logo .num { font-weight: 600; color: var(--ocean); }
+  .topbar nav {
+    display: flex; gap: 22px; font-size: 14px; font-weight: 500;
+  }
+  .topbar nav a {
+    color: var(--ink-soft); text-decoration: none;
+    padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .topbar nav a:hover { color: var(--ocean); border-bottom-color: var(--ocean); }
+  .topbar nav a.current { color: var(--ocean); border-bottom-color: var(--ocean); }
+  @media (max-width: 640px) { .topbar nav { display: none; } }
+
+  header.page-header {
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-cool);
+  }
+  .kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px;
+  }
+  h1 {
+    font-weight: 700; font-size: clamp(30px, 5vw, 42px); line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 18px; max-width: 22ch;
+  }
+  .lede {
+    font-size: 18px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  main { padding: 40px 0 60px; }
+
+  h2 {
+    font-weight: 700; font-size: 22px; line-height: 1.25;
+    letter-spacing: -0.01em; color: var(--ink);
+    margin: 44px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  h3 {
+    font-weight: 600; font-size: 17px; line-height: 1.3;
+    color: var(--ink); margin: 26px 0 8px;
+  }
+
+  p { margin-bottom: 16px; color: var(--ink); }
+  p strong { font-weight: 600; }
+
+  .stat-callout {
+    background: var(--paper-cool);
+    border-left: 4px solid var(--ocean);
+    padding: 18px 22px;
+    margin: 24px 0;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .stat-callout strong { font-weight: 700; color: var(--ocean-deep); }
+  .stat-callout .source {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+  .stat-callout .source a { color: var(--ink-faint); }
+  .stat-callout .source a:hover { color: var(--ocean); }
+
+  .stats-grid {
+    background: var(--highlight-bg);
+    border: 1px solid var(--highlight-border);
+    border-radius: 6px;
+    padding: 24px 26px;
+    margin: 28px 0;
+  }
+  .stats-grid h3 {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .stats-grid ol {
+    margin: 0; padding-left: 22px;
+  }
+  .stats-grid li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .stats-grid li:last-child { margin-bottom: 0; }
+  .stats-grid li strong { font-weight: 700; }
+
+  ul.cite-list { padding-left: 22px; margin-bottom: 16px; }
+  ul.cite-list li { margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+
+  .gap-box {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .gap-box h3 {
+    margin-top: 0;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .gap-box p { font-size: 15px; color: var(--ink-soft); margin-bottom: 0; }
+
+  .back-to-search {
+    margin: 40px 0 0;
+    padding: 22px;
+    background: var(--paper-cool);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .back-to-search p {
+    margin-bottom: 14px;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .back-to-search a.btn {
+    display: inline-block;
+    background: var(--ocean);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .back-to-search a.btn:hover {
+    background: var(--ocean-deep);
+    color: white;
+  }
+
+  footer {
+    background: var(--ocean-deep);
+    color: rgba(255, 255, 255, 0.72);
+    padding: 40px 0 32px;
+    font-size: 14px; line-height: 1.7;
+  }
+  footer p { margin-bottom: 12px; max-width: 70ch; color: rgba(255, 255, 255, 0.72); }
+  .footer-brand {
+    font-weight: 700; font-size: 18px; color: white; margin-bottom: 12px;
+  }
+  .footer-brand .num { color: rgba(255, 255, 255, 0.85); }
+  footer strong { color: white; }
+  footer a { color: rgba(255, 255, 255, 0.88); }
+  footer a:hover { color: white; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="logo"><span class="num">808</span>forms</a>
+    <nav>
+      <a href="index.html">Search forms</a>
+      <a href="why-this-matters.html" class="current">Why this matters</a>
+    </nav>
+  </div>
+</header>
+
+<header class="page-header">
+  <div class="wrap">
+    <div class="kicker">The case for a working forms finder</div>
+    <h1>Why this matters.</h1>
+    <p class="lede">Hawaii residents leave tens of millions of dollars unclaimed every year and absorb measurable harm — eviction, lost coverage, lost ancestral land, sometimes lives — because government forms are hard to find, hard to read, and easy to miss. This is the evidence, with citations.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="stats-grid">
+      <h3>Three things to know</h3>
+      <ol>
+        <li><strong>About 80,000 Oahu owner-occupants are estimated to be missing the home exemption</strong>, leaving roughly $30 million in property-tax savings on the table every year. The deadline is September 30. Filing once is enough — the exemption renews automatically.</li>
+        <li><strong>Hawaii's TDI-45 disability-claim form is not posted online by the state.</strong> The Disability Compensation Division tells claimants to "ask your employer." The 90-day filing deadline is strict, and a missed claim can mean up to $22,646 in forfeited benefits.</li>
+        <li><strong>Hawaii has the highest homelessness rate in the United States — 805 per 100,000 residents</strong>, more than three times the national average. Roughly half of Hawaii eviction cases end in default judgment because the tenant fails to appear, often because they didn't know what to file or by when.</li>
+      </ol>
+    </div>
+
+    <p>Hawaii has not built a forms infrastructure that meets its residents where they are. Forms are scattered across dozens of agency websites. PDFs are renamed every revision. Deadlines are buried. The state's official form finder lists five forms, none of which a regular resident would search for. The pattern is not unique to any one agency — it appears across property tax, worker benefits, healthcare, housing, courts, and Native Hawaiian programs. Each failure has a measurable cost.</p>
+
+    <p>This page documents what that cost looks like. Every figure links to its primary source.</p>
+
+    <h2>Money left on the table</h2>
+
+    <div class="stat-callout">
+      <strong>$15.3 million</strong> in Hawaii's refundable food/excise tax credit went unclaimed in tax year 2021 alone — by 157,953 eligible residents, of whom 140,166 never filed a tax return at all.
+      <span class="source">Source: Moore (UHERO) &amp; Karacaovali (DOTAX), April 2024 — <a href="https://uhero.hawaii.edu/unclaimed-over-15-million-in-tax-credits-for-low-income-households/" target="_blank" rel="noopener">Unclaimed: Over $15 million in tax credits for low-income households</a></span>
+    </div>
+
+    <p>That is one form, one credit, one year. The credit's maximum per qualified exemption was doubled in 2023, so the foregone amount is now larger. A family of four below the income threshold can claim up to $880 a year. Most never file because they make too little to be required to file an income tax return — and the refundable credit is invisible to them.</p>
+
+    <div class="stat-callout">
+      <strong>~80,000 Oahu owner-occupant homeowners</strong> are estimated to be missing the home exemption, leaving an estimated <strong>$30 million-plus in property-tax savings</strong> on the table each year. Honolulu has roughly 285,000 residential parcels, and only ~155,000 carry the homeowner exemption.
+      <span class="source">Source: Hawaii Business Magazine analysis of RPAD and U.S. Census data, September 2022 — <a href="https://www.hawaiibusiness.com/hawaii-homeowners-submit-lower-property-tax-exemptions-2022/" target="_blank" rel="noopener">Homeowners' Omissions Provide More than $30 Million to Honolulu Treasury</a></span>
+    </div>
+
+    <p>The Honolulu home exemption removes $120,000 of assessed value from your property's tax basis ($160,000 if you're 65 or older). The deadline is September 30. You only have to file once. Yet about 38% of eligible owner-occupants on Oahu have not.</p>
+
+    <p>The neighbor islands are opaque on this question. None of the four counties publishes a count of eligible-versus-granted home exemptions. We don't know how many Big Island, Maui, or Kaua'i homeowners are leaving the same money on the table.</p>
+
+    <h2>The form you're not allowed to download</h2>
+
+    <div class="stat-callout">
+      Hawaii's <strong>TDI-45 form</strong> — the gateway to up to $22,646 in temporary disability benefits — is <strong>not posted online by the state</strong>. The Disability Compensation Division's official guidance is: "TDI-45 Claim for Disability Benefit forms are not available online. Ask your employer for a claim form."
+      <span class="source">Source: Hawaii DLIR Disability Compensation Division — <a href="https://labor.hawaii.gov/dcd/forms/" target="_blank" rel="noopener">DCD Forms page</a></span>
+    </div>
+
+    <p>This is not an oversight. It's the design. The form has three parts: claimant, employer, doctor. It's mailed to the employer's private TDI insurance carrier — not to the state. The 90-day filing deadline is strict. The 26-week absolute bar is unforgiving. Hawaii TDI law does not, by DCD's own admission, "provide a specific timeframe within which the employer must complete Part B." A worker out of work for surgery has 90 days. The employer has none.</p>
+
+    <p>At the 2026 weekly maximum of $871 for up to 26 weeks, a single missed claim represents up to <strong>$22,646 in forfeited benefits</strong>. California's equivalent program, SDI, has been filed online directly with the state since the 2010s. Hawaii has not made the same change.</p>
+
+    <h2>The Medicaid renewal you didn't know was coming</h2>
+
+    <div class="stat-callout">
+      <strong>Roughly 25 million Americans lost Medicaid coverage</strong> during the 2023–2024 unwinding. <strong>69% of disenrollments were procedural</strong> — paperwork failures, missed deadlines, wrong forms — not findings of ineligibility.
+      <span class="source">Source: KFF Medicaid Enrollment and Unwinding Tracker, September 2024 — <a href="https://www.kff.org/medicaid/medicaid-enrollment-and-unwinding-tracker/" target="_blank" rel="noopener">kff.org/medicaid</a></span>
+    </div>
+
+    <p>In Hawaii, Med-QUEST renewal arrives in a pink envelope — a Medical Eligibility Renewal Form. Miss the deadline and coverage ends. Net Hawaii Medicaid enrollment fell about 62,000 during unwinding; only 5,152 transitioned to a HealthCare.gov Marketplace plan. The vast majority of those who lost coverage did not enroll in alternative coverage.</p>
+
+    <p>Peer-reviewed research links Medicaid coverage discontinuity to a roughly 39% increase in emergency-department visits among adults with major depression. CMS in September 2023 ordered 30 states to reinstate roughly 500,000 individuals — most of them children — terminated through faulty processing. Hawaii's specific procedural-versus-ineligible split has not been publicly released.</p>
+
+    <h2>What the homelessness numbers mean</h2>
+
+    <div class="stat-callout">
+      <strong>Hawaii has the highest homelessness rate in the United States: 805 homeless residents per 100,000 in 2024 PIT counts</strong> — more than three times the national average. Roughly half of Hawaii eviction cases end in default judgment because the tenant fails to appear. Approximately <strong>70% of landlords appear with counsel; only 5% of tenants do</strong>.
+      <span class="source">Sources: HUD AHAR via Visual Capitalist — <a href="https://www.visualcapitalist.com/ranked-u-s-states-with-the-highest-homelessness-rates/" target="_blank" rel="noopener">U.S. States With the Highest Homelessness Rates</a>; Lawyers for Equal Justice — <a href="https://www.hiequaljustice.org/reports/evicted-hawaii" target="_blank" rel="noopener">Evicted in Hawai'i</a></span>
+    </div>
+
+    <p>Eviction in Hawaii proceeds via summary possession under HRS Chapter 666. The state does not require a written Answer. Hearings often last fewer than two minutes. Eviction is the final outcome in 85–95% of cases. The peer-reviewed national evidence shows eviction filing alone — even without a judgment — is associated with a roughly 19% increase in mortality risk; an actual eviction with about 40%.</p>
+
+    <p>Act 278, signed in July 2025 and effective February 5, 2026, extended the nonpayment notice period from 5 business days to 10 calendar days and created a pre-filing mediation pilot. Under Hawaii's Act 57 precedent, pre-litigation mediation kept 85% of tenants housed versus 11% under post-filing mediation. The forms exist. Whether tenants find them in time is a different question.</p>
+
+    <h2>Native Hawaiian programs and the cost of waiting</h2>
+
+    <div class="stat-callout">
+      <strong>More than 2,000 Native Hawaiians have died on the Department of Hawaiian Home Lands waitlist</strong> without receiving a homestead lease. ProPublica calls the figure "almost certainly conservative." At the development pace of the prior 25 years, clearing the waitlist would take <strong>182 more years</strong>.
+      <span class="source">Source: ProPublica / Honolulu Star-Advertiser, "Promised Land" series — <a href="https://www.propublica.org/article/hawaii-native-land-homesteads-department-of-hawaiian-home-lands" target="_blank" rel="noopener">To Reclaim Ancestral Land</a></span>
+    </div>
+
+    <p>The DHHL waitlist holds roughly 28,700 unique applicants. Average wait time is about 19 years. If a waitlist applicant dies without filing the Designation of Successor form, the family has 180 days to claim the seat under HAR § 10-3-8 — after which the application is canceled and the family loses the place in line entirely. How many seats have been canceled this way is not publicly known.</p>
+
+    <p>The <em>Kalima v. State</em> class action settled for <strong>$328 million in July 2023</strong>. Of the roughly 2,515 qualifying class members, 1,164 had died before settlement. Their heirs are still navigating probate to receive payment.</p>
+
+    <p>808forms defers to the Office of Hawaiian Affairs, the Native Hawaiian Legal Corporation, and DHHL itself for any Native-Hawaiian-specific guidance. Cultural authority on these forms belongs to the community, not to a forms finder. We point. They lead.</p>
+
+    <h2>The state's own form finder</h2>
+
+    <div class="stat-callout">
+      Hawaii's official government form finder, at <a href="https://onlineforms.ehawaii.gov/wf/index.html" target="_blank" rel="noopener">onlineforms.ehawaii.gov</a>, lists <strong>5 forms total</strong>: a driver record correction, a procurement award verification, an Oʻahu trail incident report, a neighbor-island court-volunteer signup, and the eHawaii subscriber agreement. None of the forms residents actually search for — home exemption, TDI claim, marriage license, Med-QUEST, voter registration, REAL ID, DHHL — are on it.
+    </div>
+
+    <p>The site's <a href="https://onlineforms.ehawaii.gov/wf/page/help.html" target="_blank" rel="noopener">Help page</a> still displays lorem ipsum placeholder text in the FAQ ("Question_1? Nulla vitae elit libero, a pharetra augue…") with "department@agency.gov" as the contact email and "(808) 765-4321" as the phone number. The chat assistant declines to answer specific form questions. The technical-support line doesn't answer.</p>
+
+    <p>This is what the gap looks like. 808forms exists to fill it.</p>
+
+    <h2>What the national evidence says</h2>
+
+    <p>The administrative-burden frame published by Pamela Herd and Donald Moynihan (Russell Sage Foundation, 2018) treats forms not as administrative artifacts but as policy instruments: "Administrative burdens citizens regularly encounter in their interactions with the state are not simply unintended byproducts of governance, but the result of deliberate policy choices." Three costs disproportionately fall on the disadvantaged — learning costs, compliance costs, and psychological costs.</p>
+
+    <p>Where governments redesign forms around the user — Code for America's GetCalFresh raised California SNAP take-up from 66% to 81% by cutting application time from 45 minutes to under 10. CMS automation interventions across four states cut Medicaid procedural denials by 8.3 percentage points and increased ex parte renewals by 21.6 points (<em>Health Affairs</em>, Linke Young et al., 2025). The IRS's own published estimate is that about <strong>one in five eligible filers misses the federal Earned Income Tax Credit</strong> each year, leaving billions on the table.</p>
+
+    <p>The pattern is clean: when forms work, population statistics move. When they don't, residents lose money, coverage, custody, ancestral land, and sometimes their lives.</p>
+
+    <h2>What we don't know yet</h2>
+
+    <p>Several Hawaii-specific numbers that ought to be public are not. Each is a candidate for a public-records request, and each gap is itself a finding. Among them:</p>
+
+    <ul class="cite-list">
+      <li>The four county Real Property Assessment offices do not publish counts of <em>eligible-versus-granted</em> home, disabled-veteran, or Kuleana exemptions.</li>
+      <li>DOTAX has applied its rigorous unclaimed-credit methodology to the food/excise credit but not to the renters credit or the state EITC after refundability.</li>
+      <li>The Disability Compensation Division does not publish TDI-45 claim volumes, denial reasons, or late-filing rates.</li>
+      <li>Med-QUEST has not made Hawaii's procedural-versus-ineligible Medicaid disenrollment split publicly available.</li>
+      <li>DHS BESSD does not publish monthly SNAP closure data by reason code, or 30/60/90-day reopening (churn) rates.</li>
+      <li>DHHL does not publish how many waitlist applicants die without a designated successor, or how many seats have been canceled under the 180-day rule.</li>
+      <li>The Hawaii Judiciary does not publish family-court self-represented-litigant rates by circuit, summary-possession default rates, or TRO petition disposition data.</li>
+      <li>The Crime Victim Compensation Commission's recent annual reports are published as image-only, non-machine-readable PDFs.</li>
+      <li>The Office of Elections does not publish AVR opt-in rates at DMV transactions or eligible-but-unregistered population by county.</li>
+    </ul>
+
+    <p>Each of these is a forms problem with a forms answer. We're working on it.</p>
+
+    <h2>Sources</h2>
+
+    <p>The full evidence base is documented with primary citations in the research file behind this page. Key sources include:</p>
+
+    <ul class="cite-list">
+      <li><strong>UHERO &amp; Hawaii DOTAX</strong> — unclaimed tax credit research</li>
+      <li><strong>Hawaii Business Magazine</strong> — Honolulu home exemption analysis</li>
+      <li><strong>ProPublica / Honolulu Star-Advertiser</strong> — "Promised Land" DHHL series</li>
+      <li><strong>KFF (Kaiser Family Foundation)</strong> — Medicaid Enrollment and Unwinding Tracker</li>
+      <li><strong>Lawyers for Equal Justice</strong> — "Evicted in Hawai'i" study</li>
+      <li><strong>Hawaii Foodbank</strong> — State of Food Insecurity reports</li>
+      <li><strong>Hawai'i Appleseed Center for Law and Economic Justice</strong> — tax fairness and SNAP analysis</li>
+      <li><strong>Honolulu Civil Beat</strong> — civic and government accountability reporting</li>
+      <li><strong>Hawaii DLIR Disability Compensation Division</strong> — TDI/WC official guidance</li>
+      <li><strong>Native Hawaiian Legal Corporation</strong> — Kuleana and Native Hawaiian land guidance</li>
+      <li><strong>Pamela Herd &amp; Donald Moynihan, <em>Administrative Burden</em></strong> (Russell Sage, 2018) — policy framework</li>
+      <li><strong>Code for America</strong> — GetCalFresh and form-redesign evidence</li>
+      <li><strong>Health Affairs</strong> — Linke Young et al. on Medicaid renewal automation, 2025</li>
+      <li><strong>U.S. GAO</strong> — Social Security disability appeals report (GAO-20-641R)</li>
+      <li><strong>Eviction Lab / Princeton</strong> — Graetz et al. mortality research, 2024</li>
+    </ul>
+
+    <div class="back-to-search">
+      <p>137 Hawaii state and county forms. Every link checked April 28, 2026.</p>
+      <a href="index.html" class="btn">Search forms →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand"><span class="num">808</span>forms</div>
+    <p><strong>About this site.</strong> 808forms is an independent volunteer project that maintains a search-first directory of high-value Hawaii state and county government forms. It is not affiliated with the State of Hawaii, any county government, or any agency. Information is provided for navigation only and does not constitute legal, tax, or other professional advice.</p>
+    <p>This page documents the case for the project. The full forms catalog — 137 forms across 14 categories, every link checked against the issuing agency on April 28, 2026 — lives on the <a href="index.html">main search page</a>.</p>
+    <p><strong>Found a broken link?</strong> Note the form ID and which link broke.</p>
+  </div>
+</footer>
+
+</body>
+</html>
