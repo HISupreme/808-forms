@@ -369,6 +369,181 @@
   .why-cite-list { padding-left: 22px; margin-bottom: 16px; }
   .why-cite-list li { margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
 
+  /* Walkthroughs section */
+  .walkthroughs-section {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rule);
+    padding: 56px 0 60px;
+  }
+  .walkthroughs-section .wrap { max-width: 880px; }
+  .walkthroughs-section .wt-kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px;
+  }
+  .walkthroughs-section h2.wt-h1 {
+    font-weight: 700; font-size: clamp(28px, 4.5vw, 36px); line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .walkthroughs-section .wt-lede {
+    font-size: 17px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 60ch; margin-bottom: 32px;
+  }
+
+  /* Tile grid for walkthrough selection */
+  .wt-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 720px) {
+    .wt-tiles { grid-template-columns: 1fr; }
+  }
+  .wt-tile {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 22px 24px;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+  }
+  .wt-tile:hover {
+    border-color: var(--ocean);
+    box-shadow: 0 2px 8px rgba(10, 75, 120, 0.08);
+  }
+  .wt-tile:active { transform: translateY(1px); }
+  .wt-tile.is-active {
+    border-color: var(--ocean);
+    background: var(--paper-cool);
+    box-shadow: 0 0 0 1px var(--ocean) inset;
+  }
+  .wt-tile-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+    color: var(--ocean);
+  }
+  .wt-tile-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .wt-tile-desc {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  /* Walkthrough panels (one shown at a time) */
+  .wt-panels {
+    position: relative;
+  }
+  .wt-panel {
+    display: none;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 28px 30px;
+  }
+  .wt-panel.is-active { display: block; }
+  .wt-panel-close {
+    float: right;
+    background: none;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 5px 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 12px;
+    margin-bottom: 8px;
+  }
+  .wt-panel-close:hover { color: var(--ocean); border-color: var(--ocean); }
+  .wt-panel h3 {
+    font-weight: 700; font-size: 22px; line-height: 1.25;
+    color: var(--ink); margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .wt-panel .wt-summary {
+    font-size: 15px; line-height: 1.55; color: var(--ink-soft);
+    margin-bottom: 18px; padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .wt-panel .wt-summary strong { color: var(--ink); }
+  .wt-panel ol.wt-steps {
+    list-style: none;
+    counter-reset: step-counter;
+    padding-left: 0;
+    margin: 0 0 18px;
+  }
+  .wt-panel ol.wt-steps > li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .wt-panel ol.wt-steps > li:last-child { margin-bottom: 0; }
+  .wt-panel ol.wt-steps > li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0; top: 1px;
+    width: 26px; height: 26px;
+    background: var(--ocean);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .wt-panel ol.wt-steps > li strong { font-weight: 600; }
+  .wt-panel ol.wt-steps > li a { color: var(--ocean); }
+  .wt-panel .wt-branch {
+    background: var(--paper-cool);
+    border-left: 3px solid var(--ocean);
+    padding: 12px 16px;
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-radius: 0 4px 4px 0;
+  }
+  .wt-panel .wt-branch strong { color: var(--ink); }
+  .wt-panel .wt-narrative {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .wt-panel .wt-narrative p { margin-bottom: 12px; }
+  .wt-panel .wt-narrative p:last-child { margin-bottom: 0; }
+  .wt-panel .wt-narrative h4 {
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--ink-faint); margin: 16px 0 8px;
+  }
+
+  /* Empty state when no walkthrough selected */
+  .wt-empty {
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 14px;
+    padding: 22px 0 0;
+    font-style: italic;
+  }
+
   footer {
     background: var(--ocean-deep);
     color: rgba(255, 255, 255, 0.72);
@@ -392,6 +567,7 @@
     <a href="#top" class="logo"><span class="num">808</span>forms</a>
     <nav>
       <a href="#search">Search</a>
+      <a href="#walkthroughs">Walk throughs</a>
       <a href="#why-this-matters">Why this matters</a>
       <a href="#about">About</a>
     </nav>
@@ -406,7 +582,7 @@
     <div class="meta">Last full link check <strong>April 29, 2026</strong> &nbsp;·&nbsp; <strong id="form-count">0</strong> forms covered &nbsp;·&nbsp; Independent &mdash; not affiliated with any agency</div>
 
     <div class="verification-banner" style="background: var(--good-bg); border-color: var(--good-text); color: var(--good-text);">
-      <strong>v3 link check complete (April 29, 2026).</strong> All 157 forms have been verified for accurate URLs, deadlines, filing addresses, and revision dates. Quarterly link sweeps continue. Always confirm with the agency before filing.
+      <strong>v3 link check complete (April 29, 2026).</strong> All 158 forms have been verified for accurate URLs, deadlines, filing addresses, and revision dates. Quarterly link sweeps continue. Always confirm with the agency before filing.
     </div>
 
     <div class="search-wrap" id="search">
@@ -442,7 +618,7 @@
     <div id="results"></div>
     <div class="empty" id="empty-state" style="display:none;">
       <h3>No forms match.</h3>
-      <p>Try a different search term or clear the filter. If you think a form should be here but isn't, let us know — v3 covers 157 high-value Hawaii forms; v4 is targeted at ~200.</p>
+      <p>Try a different search term or clear the filter. If you think a form should be here but isn't, let us know — v3 covers 158 high-value Hawaii forms; v4 is targeted at ~200.</p>
     </div>
 
     <aside class="why-callout">
@@ -454,6 +630,212 @@
     </aside>
   </div>
 </main>
+
+<section class="walkthroughs-section" id="walkthroughs">
+  <div class="wrap">
+    <div class="wt-kicker">Sequenced flows for life events</div>
+    <h2 class="wt-h1">Most common walk throughs</h2>
+    <p class="wt-lede">The catalog above answers "where is the form?" These walk throughs answer "what's the sequence of forms for this life event?" Pick one to begin.</p>
+
+    <div class="wt-tiles" role="tablist" aria-label="Walk throughs">
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-becoming-resident" aria-selected="false" data-walkthrough="becoming-resident">
+        <div class="wt-tile-title">Becoming a Hawaii resident</div>
+        <div class="wt-tile-desc">DL, vehicle, voter, home exemption — all in roughly 30 days.</div>
+      </button>
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-buying-selling-home" aria-selected="false" data-walkthrough="buying-selling-home">
+        <div class="wt-tile-title">Buying or selling a home</div>
+        <div class="wt-tile-desc">HARPTA, conveyance tax, home exemption, sale-of-home reporting.</div>
+      </button>
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-starting-business" aria-selected="false" data-walkthrough="starting-business">
+        <div class="wt-tile-title">Starting a business</div>
+        <div class="wt-tile-desc">Entity choice, DCCA registration, EIN, GET license, ongoing returns.</div>
+      </button>
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-buying-selling-car" aria-selected="false" data-walkthrough="buying-selling-car">
+        <div class="wt-tile-title">Buying or selling a car</div>
+        <div class="wt-tile-desc">Title transfer, Notice of Transfer, safety inspection, registration.</div>
+      </button>
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-getting-married" aria-selected="false" data-walkthrough="getting-married">
+        <div class="wt-tile-title">Getting married in Hawaii</div>
+        <div class="wt-tile-desc">License application, ceremony, certificate, name change downstream.</div>
+      </button>
+      <button type="button" class="wt-tile" role="tab" aria-controls="wt-panel-getting-divorced" aria-selected="false" data-walkthrough="getting-divorced">
+        <div class="wt-tile-title">Filing for divorce</div>
+        <div class="wt-tile-desc">Uncontested divorce in Family Court — with or without minor children.</div>
+      </button>
+    </div>
+
+    <div class="wt-panels">
+      <p class="wt-empty" id="wt-empty-state">Select a walkthrough above.</p>
+
+      <article class="wt-panel" id="wt-panel-becoming-resident" role="tabpanel" aria-labelledby="wt-tile-becoming-resident">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walkthrough">Close ✕</button>
+        <h3>Becoming a Hawaii resident</h3>
+        <p class="wt-summary"><strong>Six things to do, in order, mostly within 30 days.</strong> Hawaii law gives you 30 days from the date residency is established to register your vehicle and exchange your driver license. The home exemption deadline is separate (Sept 30 in Honolulu, Dec 31 in other counties).</p>
+        <ol class="wt-steps">
+          <li><strong>Establish your address.</strong> Sign a lease, close on a home, or move into an existing residence. Save two pieces of mail addressed to you at the new address — utility bills, lease agreement, bank statements. You'll need them for almost every following step.</li>
+          <li><strong>Within 30 days, exchange your out-of-state driver license for a Hawaii license.</strong> Apply in person at any county driver licensing center with proof of identity, SSN, and two proofs of residency. If you have a license from another state, surrender it on the spot. <a href="#form-dl-application">→ Driver License Application</a>.
+            <div class="wt-branch"><strong>If you want REAL ID:</strong> apply for it at the same time — same trip, same documents, gold star added. <a href="#form-real-id">→ REAL ID Upgrade</a>. After May 7, 2025 enforcement, REAL ID is required for domestic flights and federal facility access.</div>
+          </li>
+          <li><strong>If you brought a vehicle from the mainland, register it within 30 days of arrival.</strong> Pass a Hawaii safety inspection first ($15-$25), then bring the certificate, your out-of-state title, your Hawaii license, proof of Hawaii insurance, and the bill of lading or shipping receipt to your county DMV. You cannot register online for an initial out-of-state transfer; it must be in person. <a href="#form-oos-vehicle-registration">→ Out-of-State Vehicle Registration (Newcomer)</a> · <a href="#form-safety-inspection">→ Periodic Vehicle Safety Inspection</a>.
+            <div class="wt-branch"><strong>Active-duty military exception:</strong> Form CS-L(MVR)50 lets you keep out-of-state registration while stationed in Hawaii — but you still need a passing safety inspection and Hawaii-compliant insurance.</div>
+          </li>
+          <li><strong>Register to vote.</strong> Hawaii uses a permanent vote-by-mail system — once registered, ballots arrive automatically before each election. The fastest path is the Online Voter Registration System (OLVR), which uses your Hawaii driver license number. <a href="#form-voter-registration">→ Voter Registration</a>.</li>
+          <li><strong>If you bought a home, file the home exemption claim with your county Real Property Assessment office.</strong> Saves $500-$2,000+ per year. The Honolulu deadline is September 30; other counties use December 31. File once — it auto-renews until you sell, move, or rent out the property.
+            <div class="wt-branch">
+              <strong>Pick the right county:</strong> <a href="#form-honolulu-home-exemption">→ Honolulu</a> · <a href="#form-bigisland-home-exemption">→ Hawai'i Island</a> · <a href="#form-maui-home-exemption">→ Maui</a> · <a href="#form-kauai-home-exemption">→ Kaua'i</a>.
+            </div>
+          </li>
+          <li><strong>Update your address everywhere else.</strong> SSA (online at ssa.gov), IRS (Form 8822), USPS (mail forwarding), employer for state withholding (HW-4), and any banks or insurance companies. If you've already registered your vehicle in Hawaii, the DMV needs an address-change notice for vehicle records too. <a href="#form-address-change-vehicle">→ Vehicle Registration Address Change</a>.</li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>Where the timeline can break down</h4>
+          <p>The most expensive miss is the home exemption. The deadline lands quietly six to nine months after most people close on a Hawaii home — long after the move-in dust has settled. About 80,000 Oahu owner-occupants are estimated to have never filed for it, surrendering an estimated $30 million in property-tax savings every year. Filing once is enough; the exemption renews automatically. If you bought between October 1, 2025 and September 30, 2026 on Oahu, your deadline is September 30, 2026.</p>
+          <p>The second most expensive miss is the 30-day vehicle window. Hawaii's late-registration penalty starts at $16 per vehicle and accrues annually — a small dollar amount, but a citation during a traffic stop can compound into much more. The clock starts when residency is established, not when the vehicle arrives. Both your DL and registration are 30-day deadlines.</p>
+          <p>If you're moving from California, Oregon, Washington, or another state with strong consumer-protection rules, expect Hawaii's process to feel paper-heavy. Most initial transactions cannot be done online and require an in-person visit. Book DMV appointments at AlohaQ.org for Honolulu; other counties have their own systems. Allow most of a morning per visit.</p>
+        </div>
+      </article>
+
+      <article class="wt-panel" id="wt-panel-buying-selling-home" role="tabpanel" aria-labelledby="wt-tile-buying-selling-home">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walkthrough">Close ✕</button>
+        <h3>Buying or selling a home in Hawaii</h3>
+        <p class="wt-summary"><strong>Most paperwork is handled by escrow and title — but the post-closing steps are yours.</strong> The forms below are the ones that hit your bottom line: HARPTA withholding, conveyance tax, home exemption. Miss them and you leave thousands of dollars unclaimed or send thousands extra to the state.</p>
+        <ol class="wt-steps">
+          <li><strong>Open escrow.</strong> Your real estate agent and the title/escrow company drive most of the standard paperwork: purchase contract, disclosures, title search, lender documents. As a buyer or seller, you'll sign — but the forms below are the ones that need attention beyond signing.</li>
+          <li><strong>If selling and you're a Hawaii resident:</strong> file Form N-289 with escrow to certify Hawaii residency and avoid HARPTA withholding entirely. If you're a non-resident or claim ambiguous residency, escrow withholds 7.25% of the gross sale price under HARPTA. <a href="#form-n-289">→ Form N-289 — HARPTA Exemption Certification</a>.
+            <div class="wt-branch">
+              <strong>Non-resident selling at a loss or low gain?</strong> File <a href="#form-n-288c">Form N-288C (tentative refund)</a> after closing, with documentation of basis (original closing statement, capital improvement records). Faster than waiting until the next January's N-15. Hawaii will scrutinize the claim — keep records meticulously.
+            </div>
+          </li>
+          <li><strong>At closing, conveyance tax is paid via Form P-64A (or P-64B if exempt).</strong> Escrow handles the form and payment. The seller is generally responsible for paying — though it's negotiable. Verify that the buyer's home-exemption eligibility box is checked on P-64A line 5 if the buyer plans to claim the home exemption — it changes the rate from $0.20/$100 to $0.10/$100 on a sub-$600K residential sale, a real savings on closing costs. <a href="#form-p-64a">→ Forms P-64A & P-64B — Conveyance Tax</a>.</li>
+          <li><strong>If you sold your principal residence, report it on next year's tax return:</strong> Form N-103 reports the sale of a personal residence. Federal tax exclusion rules under IRC §121 may reduce or eliminate gain on a principal residence — confirm with a CPA or Hawaii Tax Help whether the exclusion applies to your situation. <a href="#form-n-103">→ Form N-103 — Sale of Home</a>.</li>
+          <li><strong>If you bought, file the home exemption with your county RPAD by deadline.</strong> Honolulu: September 30. Other counties: December 31. The deadline applies to the year following purchase — file once, it auto-renews. <a href="#form-honolulu-home-exemption">→ Honolulu</a> · <a href="#form-bigisland-home-exemption">→ Hawai'i Island</a> · <a href="#form-maui-home-exemption">→ Maui</a> · <a href="#form-kauai-home-exemption">→ Kaua'i</a>.</li>
+          <li><strong>Update your address with everyone else.</strong> Lender (mortgage statements), insurance (homeowners and any other), USPS forwarding, DOTAX (Form ITPS-COA), employer (HW-4), DMV if you also moved your vehicle to a different county, and the IRS (Form 8822).</li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>For sellers: the HARPTA distinction</h4>
+          <p>HARPTA is not a tax — it's a withholding. Hawaii holds 7.25% of the sale price as a security deposit until the seller files a Hawaii income tax return showing the actual capital gains owed. If the actual liability is less than withheld, you get a refund. If you have no gain at all, you can recover the entire withholding — but you have to file the paperwork. N-289 (residence certification) eliminates withholding upfront for residents. N-288B (waiver application) reduces it for non-residents who can show they'll have minimal gain. N-288C (tentative refund) recovers withheld funds before the next year's tax filing season.</p>
+          <h4>For buyers: the conveyance-tax math</h4>
+          <p>Conveyance tax rates climb steeply. On residential properties under $600K where the buyer will claim the home exemption: $0.10 per $100 of sale price. On non-resident investor purchases over $10M with no home exemption: $1.25 per $100. The certification check on P-64A line 5 is the buyer's job to verify before signing — escrow does the math, but you sign under penalty of perjury. Foreign buyers face FIRPTA (federal 15% withholding) on top of HARPTA — coordinate with title and a CPA.</p>
+          <h4>Where the timeline can break down</h4>
+          <p>The most expensive seller miss is failing to file N-289 when you're actually a Hawaii resident — escrow then withholds HARPTA from the sale, and you wait months for the refund. The most expensive buyer miss is failing to file the home exemption by the next September 30 (Honolulu) or December 31 (other counties) — every year you miss costs $500-$2,000+. Both are forms you sign at closing or shortly after; both are worth a calendar reminder.</p>
+        </div>
+      </article>
+
+      <article class="wt-panel" id="wt-panel-starting-business" role="tabpanel" aria-labelledby="wt-tile-starting-business">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walkthrough">Close ✕</button>
+        <h3>Starting a business in Hawaii</h3>
+        <p class="wt-summary"><strong>Five forms in roughly this order.</strong> Hawaii doesn't have a state-level general business license, but you do need a tax ID and a General Excise Tax license. Below is the path for a single-member LLC or simple corporation; sole proprietors can skip step 2.</p>
+        <ol class="wt-steps">
+          <li><strong>Choose your entity type.</strong> Sole proprietor (no formal entity, you and the business are the same), LLC (liability protection, pass-through tax, $51 to form), C-Corp (full liability shield, double taxation, $50 to form), or S-Corp (C-Corp that elected pass-through tax via IRS Form 2553). Most small Hawaii businesses choose LLC. The 808forms team is not a tax attorney; consult one if your business has investors, employees, or any complexity beyond owner-operated.
+            <div class="wt-branch"><strong>If you already have an LLC and want to convert to a C-Corp later</strong>, you'll file <a href="#form-articles-of-conversion">Articles of Conversion (Form X-10)</a> alongside Form DC-1 — but you don't need to think about that now.</div>
+          </li>
+          <li><strong>If LLC or Corp, register with DCCA.</strong> File Articles of Organization (LLC, $51) or Articles of Incorporation (C-Corp, $50) with the DCCA Business Registration Division. As of April 27, 2026, the new BREG portal handles all filings (Hawaii Business Express was retired). Standard processing: 10-15 business days. Expedited: $25 extra, 1-3 days. <a href="#form-llc-1">→ Form LLC-1 (LLC Articles of Organization)</a> · <a href="#form-dc-1">→ Form DC-1 (C-Corp Articles of Incorporation)</a>.
+            <div class="wt-branch"><strong>If using a name different from your legal entity name:</strong> register a Trade Name (DBA) with DCCA. <a href="#form-t-1-trade-name">→ Form T-1 — Trade Name Registration</a>.</div>
+          </li>
+          <li><strong>Get a federal EIN from the IRS.</strong> Free, online, takes 15 minutes at irs.gov. You'll need this for the Hawaii BB-1 application and for opening a business bank account. Sole proprietors can use their SSN, but most banks require an EIN for a business account anyway.</li>
+          <li><strong>File Form BB-1 to register with DOTAX and obtain your General Excise Tax license.</strong> $20 one-time fee. Hawaii's GET applies to almost everything (services, retail, rentals, freelance income) — at 4% on Oahu, Kauai, and Hawaii Island it includes a 0.5% county surcharge bringing it to 4.5%. Online via Hawaii Tax Online (5-7 days) or paper (4-6 weeks). <a href="#form-bb-1">→ Form BB-1 — Basic Business Application</a>.
+            <div class="wt-branch"><strong>If you'll have employees:</strong> the BB-1 also covers withholding tax registration. Otherwise, you can register withholding later on a separate BB-1.</div>
+          </li>
+          <li><strong>Once operating, you're on the GET filing cycle.</strong> Periodic returns are <a href="#form-g-45">Form G-45</a> (monthly if liability over $4,000/year, quarterly if over $2,000, semi-annual if under $2,000). Annual reconciliation is <a href="#form-g-49">Form G-49</a>, due April 20 of the following year. File and pay through Hawaii Tax Online.
+            <div class="wt-branch"><strong>If you have employees:</strong> Form HW-4 collects withholding allowances from each employee on hire. Periodic withholding returns are <a href="#form-hw-14">Form HW-14</a>; annual transmittal is <a href="#form-hw-30">Form HW-30</a>. You'll also need to register for unemployment insurance with DLIR via <a href="#form-uc-1">Form UC-1</a>.</div>
+          </li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>The General Excise Tax surprise</h4>
+          <p>The GET is what catches most new Hawaii business owners. It's not a sales tax — it's a tax on gross receipts (revenue before any expenses), and it applies to services, not just goods. A consultant earning $100K in revenue with $80K in expenses and $20K in profit pays GET on the full $100K, not on the $20K profit. Most businesses pass it to customers as a separate line item on invoices, which legally requires a 4.166% markup (because the tax also applies to the markup). If you don't pass it through, you absorb it. Either way, it's a real cost that erodes margin in low-margin businesses.</p>
+          <h4>Things 808forms does not handle</h4>
+          <p>Industry-specific licenses (real estate, contractors, food service, child care, beauty, professional services) are issued by separate DCCA boards or specialty agencies and are not covered above. The DCCA Business Action Center maintains a directory; check there before opening. County-level permits (zoning, signage, food handler) are also separate and county-specific. If you're employing minors, opening a regulated business, or operating in healthcare, education, or finance, the licensing layer is significantly larger than what's described here.</p>
+          <h4>Where the timeline can break down</h4>
+          <p>Two common mistakes: not getting the GET license before starting to invoice (you can be assessed the tax even if you didn't collect it), and missing the Form G-49 annual reconciliation (it's separate from your periodic G-45 returns and easy to forget). For free, confidential help with small business setup and ongoing tax compliance, contact the Hawaii Small Business Development Center (SBDC) — they're free and will walk you through the process in plain language without charging.</p>
+        </div>
+      </article>
+
+      <article class="wt-panel" id="wt-panel-buying-selling-car" role="tabpanel" aria-labelledby="wt-tile-buying-selling-car">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walk through">Close ✕</button>
+        <h3>Buying or selling a car in Hawaii</h3>
+        <p class="wt-summary"><strong>Two short timelines: 10 days for the seller's Notice of Transfer, 30 days for the buyer's title transfer.</strong> Miss the Notice of Transfer and the seller stays liable for tickets, parking violations, and accidents under the buyer's use. Miss the buyer's 30-day window and a $50 penalty stacks on top of the $10 transfer fee.</p>
+        <ol class="wt-steps">
+          <li><strong>Before the sale, the seller confirms the vehicle has a current safety inspection.</strong> Hawaii requires an annual safety inspection — without it, the title can't legally transfer. <a href="#form-safety-inspection">→ Periodic Vehicle Safety Inspection</a>.
+            <div class="wt-branch"><strong>If the title is lost:</strong> the seller files for a duplicate title before the sale. Lienholder must sign if there is one. <a href="#form-duplicate-title">→ Duplicate / Replacement Vehicle Title</a>.</div>
+          </li>
+          <li><strong>At the sale, the seller endorses the back of the title and gives the buyer three documents:</strong> the endorsed Certificate of Title, the most recent Certificate of Registration, and the current Safety Inspection Certificate. The buyer and seller both sign the title; both record the odometer reading. Joint owners on either side: every owner must sign.
+            <div class="wt-branch"><strong>If the seller's name is NOT on the title</strong> (e.g., reselling for a friend or family member without title transfer first), Honolulu County requires a notarized bill of sale on Form CS-L(MVR)40. Other counties handle case-by-case. <a href="#form-vehicle-bill-of-sale">→ Vehicle Bill of Sale</a>.</div>
+          </li>
+          <li><strong>Within 10 days, the seller files the Notice of Transfer with the county DMV.</strong> Honolulu uses Form CS-L(MVR)53; other counties have their own. Often perforated at the top of the Certificate of Title — detach it and mail in. The Notice protects the seller from liability for what the buyer does with the car. Failure to file: up to $100 fine, plus continued liability.
+            <div class="wt-branch"><strong>Best practice:</strong> photo or scan the completed Notice before mailing. Hawaii recommends keeping a copy for at least one year.</div>
+          </li>
+          <li><strong>Within 30 days of the seller's date of transfer, the buyer registers the vehicle in their name.</strong> The buyer brings the endorsed title, the registration certificate, the safety inspection, proof of Hawaii insurance, and a registration application (Honolulu: Form CS-L(MVR)1) to the county DMV. Title transfer fee: $10. After 30 days: $50 penalty added. <a href="#form-title-transfer">→ Vehicle Title Transfer</a>.
+            <div class="wt-branch"><strong>If the registration is expiring within 45 days,</strong> annual renewal fees come due along with the transfer fee. <a href="#form-vehicle-registration-renewal">→ Vehicle Registration Renewal</a>.</div>
+          </li>
+          <li><strong>The seller cancels insurance only AFTER the buyer takes possession and the Notice of Transfer is filed.</strong> Cancelling early leaves you uninsured for any damage during pickup. Some sources say to remove license plates before sale; Honolulu best practice is to leave plates on and let the buyer transfer through county. Confirm with your county DMV — practice varies.</li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>The Notice of Transfer is not optional</h4>
+          <p>Under HRS § 286-52, the seller has 10 days from the date of transfer to file the Notice of Transfer. Until that filing is recorded, the seller's name remains on the DMV record — and so does liability. Parking tickets, traffic citations, accident-caused civil claims, and even tax-collection actions can attach to the seller during the gap. The Honolulu form is short (vehicle description, buyer information, signatures); the cost of filing is zero. The cost of NOT filing can be hundreds to thousands of dollars in liability for someone else's actions.</p>
+          <h4>Use tax for newer vehicles</h4>
+          <p>For vehicles being registered in Hawaii for the first time (e.g., a vehicle imported from out of state), Hawaii imposes a use tax — calculated via Form G-27 stamped by DOTAX. Casual private sales of vehicles already registered in Hawaii do not generally trigger new use tax, but newer model years sometimes do. Ask the county DMV at the transfer counter; if uncertain, ask the seller for the original Hawaii Certificate of Title to confirm prior registration history.</p>
+          <h4>Where the timeline can break down</h4>
+          <p>The most expensive seller miss is the 10-day Notice of Transfer. The most expensive buyer miss is delaying past 30 days, since the $50 penalty applies even if the seller has filed everything correctly. Both deadlines are short; both protect both parties when met. If selling a vehicle to a buyer who plans to ship it off-island, file the Notice of Transfer immediately upon sale — don't wait for the shipping logistics to settle.</p>
+        </div>
+      </article>
+
+      <article class="wt-panel" id="wt-panel-getting-married" role="tabpanel" aria-labelledby="wt-tile-getting-married">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walk through">Close ✕</button>
+        <h3>Getting married in Hawaii</h3>
+        <p class="wt-summary"><strong>License application online, then both partners meet a license agent in person, then ceremony within 30 days.</strong> Hawaii has no residency requirement, no waiting period, no witness requirement, and no blood test. The license is $65 and is valid only in Hawaii. The certificate arrives by mail 4–6 weeks after the ceremony. For prenuptial agreements, federal tax planning, immigration consequences of marriage, or marriage-versus-civil-union choice, consult an attorney or CPA — those questions are out of scope for a forms walk through.</p>
+        <ol class="wt-steps">
+          <li><strong>Both prospective spouses complete the online application together.</strong> The Department of Health uses the Hawaii Electronic Marriage and Civil Union Registration System (eMRS) at marriage.ehawaii.gov (for marriage) or civilunion.ehawaii.gov (for civil union). $65 license fee paid by credit/debit card during application. The system issues a Locator ID — save it. The application stays valid for 1 year. <a href="#form-marriage-license-application">→ Marriage License Application</a>.</li>
+          <li><strong>Both partners appear in person before a State of Hawaii license agent.</strong> Bring valid government photo ID for each partner; bring the Locator ID receipt. Both must be 18 or older — a certified birth certificate is required for proof of age if 18 or under. If previously married and the divorce or death was less than 30 days ago, bring a certified divorce decree or death certificate. The agent verifies, signs, and issues the physical marriage license — usually same day, sometimes immediately at the appointment.
+            <div class="wt-branch"><strong>For visitors planning a destination wedding:</strong> book the agent appointment 30–60 days in advance. Most agents are concentrated near major resort areas. The Department of Health office in Honolulu (1250 Punchbowl St) accepts walk-ins by appointment but is busy on weekends.</div>
+          </li>
+          <li><strong>Once issued, the license is valid for 30 days.</strong> The ceremony must take place within those 30 days, anywhere in the State of Hawaii. The license is NOT valid outside Hawaii — if you don't have the ceremony in time, you must reapply.</li>
+          <li><strong>The ceremony is officiated by a Hawaii-registered performer.</strong> Performers must be commissioned by the State of Hawaii — verify in advance via DOH's online performer search. A friend or family member can become a performer by registering through eMRS. No witnesses required by Hawaii law (though many performers prefer one or two for ceremonial reasons).</li>
+          <li><strong>The performer files the completed license with DOH electronically.</strong> Within minutes after the ceremony, the temporary marriage certificate is available online to the couple. The official certified marriage certificate is mailed to the address listed on the application 4–6 weeks later. <a href="#form-marriage-cert">→ Certified Marriage Certificate</a>.
+            <div class="wt-branch"><strong>For international use:</strong> if you'll need the certificate abroad (immigration, name change in another country), order an apostille / authentication. <a href="#form-apostille-vital-records">→ Apostille / Authentication of Hawaii Vital Records</a>. Allow 3–4 weeks for DOH-routed apostilles.</div>
+          </li>
+          <li><strong>Name change is OPTIONAL and downstream.</strong> If you're changing your name, you'll need certified copies of the marriage certificate to update SSA (do this first, online or in person at the local office), then DL/State ID, passport, banks, employer (HW-4), insurance, and so on. A Hawaii marriage certificate is the legal name-change document — no separate court order needed.</li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>For destination weddings: the timing constraint</h4>
+          <p>Hawaii is one of the easiest places in the world to get legally married. There's no residency requirement, no waiting period, no blood test, no witness requirement. The bottleneck is appointment availability with a license agent — peak season (May through September) and around major holidays, agents fill 30–60 days out. The license itself is fast: file the online application and pay the fee, schedule the in-person agent visit, get the physical license, do the ceremony, get the certified document by mail. International couples should note: Hawaii's marriage certificate is recognized worldwide, but specific countries may require an apostille or additional legalization — verify with your home country's embassy or consulate before relying on it.</p>
+          <h4>Civil unions</h4>
+          <p>Hawaii has separate marriage and civil union systems with parallel forms and procedures. Civil unions provide all the same state-level rights as marriage but use a different form. The federal recognition picture has changed over time — a Hawaii civil union is recognized federally for many purposes but not identical to marriage. If you're choosing between the two for tax, immigration, or benefits reasons, talk to an attorney before applying.</p>
+          <h4>Where the timeline can break down</h4>
+          <p>The 30-day expiration is the most common miss for couples planning long engagements. Don't apply too early — apply within 60 days of the ceremony date. If the timeline slips, the application stays valid for 1 year but a new in-person license issuance and ceremony must happen within the new 30-day window. Apostille processing can take 3–4 weeks on top of the 4–6 week certificate mailing — if you need the certificate for an overseas filing, plan 2 months from ceremony.</p>
+        </div>
+      </article>
+
+      <article class="wt-panel" id="wt-panel-getting-divorced" role="tabpanel" aria-labelledby="wt-tile-getting-divorced">
+        <button type="button" class="wt-panel-close" data-close-walkthrough aria-label="Close walk through">Close ✕</button>
+        <h3>Filing for divorce in Hawaii</h3>
+        <p class="wt-summary"><strong>Hawaii allows divorce on the grounds of irretrievable breakdown — no proof of fault required, no mandatory waiting period for uncontested cases.</strong> Filing fee is $215–$235; fee waivers available for low-income filers. An uncontested divorce typically takes 4–8 weeks. Contested divorces take far longer and usually need an attorney. This walkthrough is for uncontested cases — both spouses agree on terms.</p>
+        <ol class="wt-steps">
+          <li><strong>Confirm you qualify for an uncontested divorce.</strong> You qualify if: both spouses agree on division of property and debt, agree on any spousal support, and (if you have children) agree on custody, parenting schedules, and child support. If even one of these is in dispute, the case becomes contested and you should consult an attorney.
+            <div class="wt-branch"><strong>If you can't afford an attorney:</strong> the Legal Aid Society of Hawaii's Self-Help Interactive Forms (legalaidhawaii.org/self-help-interactive-forms.html) walk you through forms via guided interview — free, designed for self-represented filers. The Family Court Service Center on each island also offers procedural (not legal) help.</div>
+          </li>
+          <li><strong>Determine your circuit (which county).</strong> Hawaii Family Court has four circuits: First Circuit (Oʻahu), Second Circuit (Maui, Molokaʻi, Lānaʻi), Third Circuit (Hawaiʻi Island), Fifth Circuit (Kauaʻi). File in the circuit where you or your spouse resides. Each circuit has its own form set with different form numbers — but the underlying paperwork is similar across all four.</li>
+          <li><strong>Pick the right form packet for your situation.</strong> Family Court provides separate uncontested-divorce packets for cases with minor children versus without. <a href="#form-uncontested-divorce-no-children">→ Uncontested Divorce — No Children</a> · <a href="#form-uncontested-divorce-with-children">→ Uncontested Divorce — With Children</a>. Each packet bundles the Complaint for Divorce, Matrimonial Action Information sheet, Income & Expense Statement, Asset & Debt Statement, and the proposed Decree.
+            <div class="wt-branch"><strong>If there is a history of domestic violence,</strong> file a Family Court Temporary Restraining Order (TRO) before — or alongside — the divorce. Different process, different urgency. <a href="#form-family-tro">→ Family Court TRO</a>.</div>
+          </li>
+          <li><strong>The filing spouse (the Plaintiff) files the Complaint and pays the fee.</strong> Filing fee is $215–$235. If you cannot afford it, file a separate Application for Fee Waiver at the courthouse clerk's office — approval is based on income guidelines. After filing, the Complaint must be served on the other spouse (the Defendant). For uncontested cases where the other spouse will sign in agreement, this is usually handled by a stipulated Acceptance of Service.</li>
+          <li><strong>Both spouses complete and sign all required disclosures.</strong> Income & Expense Statements, Asset & Debt Statements, and (for cases with children) parenting plans and child support guidelines worksheets. Mandatory financial disclosures — both spouses must produce recent pay stubs, tax returns, bank statements, retirement account summaries, and proof of debts. Withholding or misrepresenting financial information can void the decree later.</li>
+          <li><strong>Submit the proposed Decree of Divorce to the judge.</strong> For uncontested cases, no hearing may be required — many circuits allow decree-on-the-papers if the paperwork is complete and signed by both spouses. The judge reviews and signs the Decree. Once signed and filed, the divorce is final.
+            <div class="wt-branch"><strong>If you have retirement accounts to divide:</strong> a separate Qualified Domestic Relations Order (QDRO) is required after the divorce decree to instruct the plan administrator to divide the account. QDRO drafting typically costs $500–$2,500 from a QDRO specialist; do not try to draft this yourself.</div>
+          </li>
+        </ol>
+        <div class="wt-narrative">
+          <h4>Self-represented vs. attorney-assisted</h4>
+          <p>Hawaii allows pro se (self-represented) divorce filings, and Family Court processes them every day with the same procedural treatment as attorney-filed cases. The judge cannot give you legal advice. Court staff can answer procedural questions ("which form is for X") but cannot answer substantive questions ("should I agree to Y"). For uncontested cases with simple finances and no children, self-representation works fine. For anything with retirement accounts, a business interest, real property in dispute, or contested custody, even brief consultation with a family law attorney is worth the cost — many offer flat-fee unbundled services for specific tasks like document review.</p>
+          <h4>Free help</h4>
+          <p>Legal Aid Society of Hawaii (legalaidhawaii.org) provides free legal services for income-qualifying filers in family court matters. The Hawaii State Bar Association runs a Lawyer Referral Service that offers a 30-minute consultation for $25. The Family Court Service Center on each island provides procedural information and form access — Oʻahu's center is at 4675 Kapolei Parkway, Kapolei, HI 96707, phone (808) 954-8290. None of these services give legal advice over the phone for substantive questions, but they can clarify what each form does.</p>
+          <h4>Where the timeline can break down</h4>
+          <p>The most common pro se mistake is incomplete financial disclosure — leaving out a retirement account, a small bank account, or a debt the other spouse didn't know about. This can void the decree later if the omission is discovered. Disclose everything, even items you think don't matter. The second most common mistake is treating an "agreed" parenting plan as something you can revise informally later — once signed into the decree, the plan is enforceable, and modifications require either both parents' written agreement or a court motion.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
 
 <section class="why-section" id="why-this-matters">
   <div class="wrap">
@@ -596,7 +978,7 @@
     <p><strong>About this site.</strong> 808forms is an independent volunteer project that maintains a search-first directory of high-value Hawaii state and county government forms. It is not affiliated with the State of Hawaii, any county government, or any agency. Information is provided for navigation only and does not constitute legal, tax, or other professional advice. The case for why the project exists, with citations, is above in <a href="#why-this-matters">Why this matters</a>.</p>
     <p><strong>What we do:</strong> point you to the agency's current page for each form, tell you the deadline, and tell you where to send it. <strong>What we don't do:</strong> host the PDFs ourselves, fill out the form for you, replace the official filing channel, or guarantee eligibility — always verify with the issuing agency before filing.</p>
     <p><strong>Why some links go to a PDF and some to an agency page:</strong> Hawaii agencies frequently rename PDF files when they revise them. A direct PDF link that worked last week may 404 this week. Where the agency provides a stable PDF URL (such as Maui County's DocumentCenter URLs, or DOTAX's <code>/current/</code> aliases), the "Download the form PDF" button takes you straight there. Where the only available PDF has a year-tagged or hash-named URL that's likely to break on revision, the button instead reads "Find the form on the agency page" and takes you to the topical page where the current revision is always linked. The trade-off is one extra click, in exchange for a link that won't be broken in six months.</p>
-    <p><strong>Coverage in v3:</strong> v1 covered the highest-value forms identified in a Hawaii civic-tech audit — the four-county real-property exemptions, worker benefit forms (TDI, workers comp), key tax credits, cesspool conversion, and DHHL applications. v2 expanded to 138 forms across 14 categories. v3 brings the total to <strong>157 forms across 14 categories</strong>, adding county camping permits, vehicle bill of sale, duplicate title / registration / driver license, notary commission, apostille, additional tax forms (L-72, D-100, N-356, N-200V), unemployment-insurance forms (UC-1, UC-25, UC-175, UC-253), articles of conversion, and a wage-garnishment release motion. Every form has been individually link-checked as of April 29, 2026 — URL, revision date, deadline, filing address, and current agency contact verified directly against the issuing agency. We're aiming for ~200 forms in v4, with multilingual labels (Tagalog, Ilokano, Marshallese, Chuukese, ʻōlelo Hawaiʻi) to follow.</p>
+    <p><strong>Coverage in v3:</strong> v1 covered the highest-value forms identified through a Hawaii civic-tech review — the four-county real-property exemptions, worker benefit forms (TDI, workers comp), key tax credits, cesspool conversion, and DHHL applications. v2 expanded to 138 forms across 14 categories. v3 brings the total to <strong>158 forms across 14 categories</strong>, adding county camping permits, vehicle bill of sale, duplicate title / registration / driver license, notary commission, apostille, additional tax forms (L-72, D-100, N-356, N-200V), unemployment-insurance forms (UC-1, UC-25, UC-175, UC-253), articles of conversion, conveyance tax (P-64A/B), and a wage-garnishment release motion. v3 also introduces <strong>Walk throughs</strong> — six sequenced flows for life events (becoming a Hawaii resident, buying or selling a home, starting a business, buying or selling a car, getting married, filing for divorce) that link into the catalog cards. Every form has been individually link-checked as of April 29, 2026 — URL, revision date, deadline, filing address, and current agency contact verified directly against the issuing agency. We're aiming for ~200 forms and additional walk throughs in v4, with multilingual labels (Tagalog, Ilokano, Marshallese, Chuukese, ʻōlelo Hawaiʻi) to follow.</p>
     <p><strong>What we don't cover, and why:</strong> some categories of Hawaii civic life are better served by specialized nonprofits than by a forms-finder. We defer to <a href="https://hawaiitaxhelp.org" target="_blank" rel="noopener">Hawaii Tax Help</a> for tax filing, <a href="https://www.legalaidhawaii.org" target="_blank" rel="noopener">Legal Aid Society of Hawaii</a> for evictions and immigration, <a href="https://namihawaii.org" target="_blank" rel="noopener">NAMI Hawaii</a> for mental health, <a href="https://www.nhlchi.org" target="_blank" rel="noopener">Native Hawaiian Legal Corporation</a> for Native Hawaiian legal questions, <a href="https://www.kokuamau.org" target="_blank" rel="noopener">Kokua Mau</a> for advance directives, and <a href="https://www.domesticviolenceactioncenter.org" target="_blank" rel="noopener">DVAC</a> for domestic violence. Federal immigration forms are entirely out of scope.</p>
     <p><strong>Last full link check:</strong> April 29, 2026. Quarterly link sweeps; annual revision-date verification each January. <strong>Found a broken link?</strong> Note the form ID and which link broke.</p>
   </div>
@@ -2710,6 +3092,28 @@ const FORMS = [
     lastVerified: '2026-04-28',
     notes: 'Pairs with N-288A (per-seller statement), N-288B (waiver/reduction request), N-288C (tentative refund), and N-289 (certification of non-foreign status — used in nearly every HI sale).'
   },
+  {
+    id: 'p-64a',
+    name: 'Conveyance Tax Certificate / Exemption — Forms P-64A & P-64B',
+    formNumber: 'Forms P-64A and P-64B',
+    revision: 'Rev. 2024',
+    agency: 'Hawaii Department of Taxation + Bureau of Conveyances',
+    agencyShort: 'DOTAX + BOC',
+    county: 'Statewide',
+    category: 'property',
+    description: 'Hawaii\'s real-estate transfer tax. P-64A is filed for any real-property conveyance subject to the tax. P-64B is filed to claim an exemption (gift, divorce, foreclosure, parent-to-child, certain trusts, etc.). The seller is generally responsible for paying the tax, but escrow handles the form and payment as part of closing. The form must be submitted to the Bureau of Conveyances along with the deed; if claiming exemption, P-64B usually goes to DOTAX Technical Section first for review (3–10 business days), then to BOC.',
+    eligibility: 'Required for any document conveying a real-property interest in Hawaii. Exempt categories include divorce decrees, gifts between spouses or to qualified trusts, foreclosure deeds in lieu, conveyances to/from government entities, and several others — file P-64B instead of P-64A.',
+    deadline: 'Filed at closing (with the deed). P-64B exemption requests need 3–10 business days for DOTAX review before they can be recorded.',
+    deadlineISO: null,
+    filingMethods: ['Filed with the deed at the Bureau of Conveyances (escrow handles)', 'P-64B exemption: mail to DOTAX Technical Section first, then to BOC'],
+    filingAddress: 'Bureau of Conveyances: 1151 Punchbowl St, Honolulu HI 96813. P-64B exemption review: Hawaii DOTAX Technical Section, P.O. Box 259, Honolulu HI 96809-0259.',
+    need: ['Tax Map Key (TMK) of the property', 'Sale price (P-64A) or basis for exemption (P-64B)', 'Names of parties to the deed', 'Certification of buyer\'s eligibility for home exemption (if applicable — reduces tax rate on residential)', 'The deed being recorded'],
+    value: 'Conveyance tax rates run from $0.10/$100 (under $600K, buyer eligible for home exemption) up to $1.25/$100 (over $10M, buyer NOT eligible for home exemption). On a $900,000 sale where the buyer will claim the home exemption, conveyance tax is $1,800. On a $10M+ sale to an investor, it can exceed $125,000. Misclassifying triggers IRS-style penalties.',
+    formUrl: 'https://files.hawaii.gov/tax/forms/current/p64a.pdf',
+    sourceUrl: 'https://tax.hawaii.gov/forms/a1_b3_3convey/',
+    lastVerified: '2026-04-29',
+    notes: 'On the Hawaii Association of REALTORS® standard contract, escrow charges the seller for the conveyance tax by default — but this is negotiable. Buyers who plan to claim the home exemption should make sure escrow checks the right box on P-64A (line 5) — that single checkmark moves the rate from $0.20/$100 to $0.10/$100 on a sub-$600K sale. Escrow is responsible for the math, but verify the certification before signing. Foreign buyers should also note FIRPTA (federal 15% withholding) applies on top of HARPTA — coordinate with title and a tax pro.'
+  },
 
   // ============ HEALTH (Cesspool — additional) ============
   // Note: v1 already has cesspool grant; we add the IWS construction permit companion
@@ -4346,6 +4750,59 @@ document.querySelectorAll('.chip').forEach(chip => {
 
 document.getElementById('form-count').textContent = FORMS.length;
 render();
+
+// Walkthrough tile/panel toggle
+(function() {
+  const tiles = document.querySelectorAll('.wt-tile');
+  const panels = document.querySelectorAll('.wt-panel');
+  const emptyEl = document.getElementById('wt-empty-state');
+  const closeButtons = document.querySelectorAll('[data-close-walkthrough]');
+
+  function showWalkthrough(key) {
+    tiles.forEach(t => {
+      const active = t.dataset.walkthrough === key;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach(p => {
+      p.classList.toggle('is-active', p.id === 'wt-panel-' + key);
+    });
+    if (emptyEl) emptyEl.style.display = 'none';
+  }
+
+  function closeWalkthrough() {
+    tiles.forEach(t => {
+      t.classList.remove('is-active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    panels.forEach(p => p.classList.remove('is-active'));
+    if (emptyEl) emptyEl.style.display = '';
+  }
+
+  tiles.forEach(t => {
+    t.addEventListener('click', () => {
+      const key = t.dataset.walkthrough;
+      // Toggle: if already active, close; otherwise show
+      if (t.classList.contains('is-active')) {
+        closeWalkthrough();
+      } else {
+        showWalkthrough(key);
+        // Smooth-scroll the panel into view if user is below the tiles
+        setTimeout(() => {
+          const panel = document.getElementById('wt-panel-' + key);
+          if (panel) {
+            const rect = panel.getBoundingClientRect();
+            if (rect.top < 0 || rect.top > window.innerHeight - 100) {
+              panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }, 50);
+      }
+    });
+  });
+
+  closeButtons.forEach(b => b.addEventListener('click', closeWalkthrough));
+})();
 </script>
 
 </body>
